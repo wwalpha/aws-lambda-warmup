@@ -1,0 +1,15 @@
+{
+  "extends": [
+    "tslint-config-airbnb"
+  ],
+  "rules": {
+    "max-line-length": [
+      true,
+      200
+    ],
+    "import-name": false,
+    "no-unused-variable": true,
+    "semicolon": true,
+    "object-shorthand-properties-first": false
+  }
+}

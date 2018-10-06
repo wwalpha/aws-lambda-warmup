@@ -1,0 +1,29 @@
+{
+  "name": "aws-lambda-warmup",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/wwalpha/aws-lambda-warmup.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/wwalpha/aws-lambda-warmup/issues"
+  },
+  "homepage": "https://github.com/wwalpha/aws-lambda-warmup#readme",
+  "dependencies": {
+    "aws-sdk": "^2.329.0"
+  },
+  "devDependencies": {
+    "@types/aws-lambda": "^8.10.13",
+    "@types/node": "^10.11.4",
+    "tslint": "^5.11.0",
+    "tslint-config-airbnb": "^5.11.0",
+    "typescript": "^3.1.1"
+  }
+}

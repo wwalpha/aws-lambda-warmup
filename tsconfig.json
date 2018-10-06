@@ -1,0 +1,49 @@
+{
+  "compilerOptions": {
+    "rootDir": ".",
+    "typeRoots": [
+      "./typings"
+    ],
+    "types": [
+      "node",
+      "aws-sdk",
+      "aws-lambda"
+    ],
+    "outDir": "dist",
+    "target": "esnext",
+    "module": "commonjs",
+    // "moduleResolution": "node",
+    "lib": [
+      "es5",
+      "es6",
+      "es2015.promise",
+      "es7",
+      "esnext"
+    ],
+    "removeComments": true,
+    "allowJs": false,
+    "allowUnreachableCode": false,
+    "allowUnusedLabels": false,
+    // "noImplicitAny": true,
+    "strictNullChecks": true,
+    "noImplicitThis": true,
+    "alwaysStrict": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": false,
+    "noImplicitReturns": true,
+    "noFallthroughCasesInSwitch": false,
+    "sourceMap": false,
+    "inlineSources": false,
+    "experimentalDecorators": true,
+    "strictPropertyInitialization": false,
+  },
+  "compileOnSave": true,
+  "include": [
+    "src/**/*",
+  ],
+  "exclude": [
+    "node_modules",
+    "**/*.spec.ts",
+    "dist/**/*",
+  ]
+}
