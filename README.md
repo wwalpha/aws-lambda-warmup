@@ -1,4 +1,5 @@
 # AWS-Lambda-Warmup
+AWS Lambdaで発生するコールドスタートを軽減させる為の対策を実施します。
 
 ## Prerequisites
 * Python3.6
