@@ -1,4 +1,16 @@
 {
   "tslint.autoFixOnSave": true,
   "tslint.run": "onSave",
+  "yaml.schemas": {
+    "https://raw.githubusercontent.com/awslabs/goformation/master/schema/sam.schema.json": [
+      "sam.yaml",
+      "sam.yml"
+    ]
+  },
+  "yaml.customTags": [
+    "!Sub",
+    "!Ref",
+    "!GetAtt"
+  ],
+  "yaml.validate": false
 }

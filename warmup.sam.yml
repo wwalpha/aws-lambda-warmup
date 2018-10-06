@@ -1,0 +1,31 @@
+AWSTemplateFormatVersion: 2010-09-09
+Transform: AWS::Serverless-2016-10-31
+
+Parameters:
+  EnvType:
+    Type: String
+    Default: prod
+
+Resources:
+  WarmupRole:
+    Type: AWS::IAM::Role
+    Properties:
+      ManagedPolicyArns:
+        - arn:aws:iam::aws:policy/service-role/AWSLambdaBasicExecutionRole
+        - arn:aws:iam::aws:policy/AWSLambdaFullAccess
+      RoleName: !Sub ${EnvType}-WarmupRole
+
+  LambdaWarmup:
+    Type: AWS::Serverless::Function
+    Properties:
+      Handler: app.handler
+      Runtime: nodejs8.10
+      CodeUri: dist/src
+      FunctionName: !Sub ${EnvType}-lambda-warmup
+      Environment:
+        Variables:
+          ENVIRONMENT: prod
+          EXCEPT_FUNCTIONS: !Sub ${EnvType}-lambda-warmup
+      MemorySize: 512
+      Timeout: 10
+      Role: !GetAtt WarmupRole.Arn

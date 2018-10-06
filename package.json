@@ -2,9 +2,11 @@
   "name": "aws-lambda-warmup",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "init": "aws s3 mb s3://project-xxx-deployments- --region ap-northeast-1",
+    "sam:pkg": "sam package --template-file warmup.sam.yml --s3-bucket project-xxx-deployments --output-template-file packaged.yml",
+    "sam:deploy": "sam deploy --template-file packaged.yml --stack-name lambda-warmup --capabilities CAPABILITY_IAM",
+    "deploy": "tsc && npm run sam:pkg && npm run sam:deploy"
   },
   "repository": {
     "type": "git",
