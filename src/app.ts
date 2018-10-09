@@ -21,7 +21,7 @@ const invoke = async () => {
     return;
   }
 
-  const invokes: any = [];
+  const invokeParams: Lambda.Types.InvocationRequest[] = [];
 
   funcs.Functions.forEach((func) => {
     if (!func.FunctionName) return;
@@ -37,16 +37,25 @@ const invoke = async () => {
       Qualifier: '$LATEST',
       Payload: JSON.stringify({ source: 'Health check from lambda.' }),
     };
-    invokes.push(client.invoke(params).promise());
+    invokeParams.push(params);
   });
 
   // 対象なし
-  if (invokes.length === 0) {
+  if (invokeParams.length === 0) {
     console.log('Invoke Function: Nothing');
     return;
   }
 
-  const ret = await Promise.all(invokes);
+  const invokes = invokeParams.map(item => client.invoke(item).promise());
 
-  console.log(ret);
+  const results: any[] = await Promise.all(invokes);
+
+  results.forEach((result, index) => {
+    if (!result.FunctionError) {
+      console.log(`FunctionName: ${invokeParams[index].FunctionName} invoke successed.`);
+    } else {
+      console.log(`FunctionName: ${invokeParams[index].FunctionName}`);
+      console.log(result);
+    }
+  });
 };
